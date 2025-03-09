@@ -9,6 +9,9 @@ import hmac
 import subprocess
 
 app = Flask(__name__, static_folder=None)
+load_dotenv("/etc/PyGitHook/app/.env")
+config = dotenv_values()
+app.config.from_mapping(config)
 
 def validate_signature(payload_body, secret_token, signature_header):
     if not signature_header:
@@ -54,9 +57,6 @@ def git_pull():
     
 
 def main():
-    load_dotenv("/etc/PyGitHook/app/.env")
-    config = dotenv_values()
-    app.config.from_mapping(config)
     app.run(debug=True, port=5500, host="0.0.0.0")
 
 if __name__ == "__main__":
