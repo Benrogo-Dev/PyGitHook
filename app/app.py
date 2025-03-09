@@ -8,10 +8,12 @@ import hashlib
 import hmac
 import subprocess
 
-app = Flask(__name__, static_folder=None)
-load_dotenv("/etc/PyGitHook/app/.env")
-config = dotenv_values()
-app.config.from_mapping(config)
+def register_app():
+    app = Flask(__name__, static_folder=None)
+    load_dotenv()
+    config = dotenv_values()
+    app.config.from_mapping(config)
+    return app
 
 def validate_signature(payload_body, secret_token, signature_header):
     if not signature_header:
@@ -20,6 +22,8 @@ def validate_signature(payload_body, secret_token, signature_header):
     expected_signature = "sha256=" + hash_object.hexdigest()
     if not hmac.compare_digest(expected_signature, signature_header):
         raise ValueError("Error validating signature - signatures do not match")
+
+app = register_app()
 
 @app.route("/", methods=["POST"])
 def git_pull():
