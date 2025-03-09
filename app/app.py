@@ -54,7 +54,7 @@ def git_pull():
     
 
 def main():
-    load_dotenv()
+    load_dotenv("/etc/PyGitHook/app/.env")
     config = dotenv_values()
     app.config.from_mapping(config)
     app.run(debug=True, port=5500, host="0.0.0.0")
