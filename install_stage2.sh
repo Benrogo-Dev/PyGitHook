@@ -14,7 +14,7 @@ python3 -m venv .venv
 
 # Install Pip dependencies
 echo "Installing Pip dependencies..."
-.venv/bin/pip3 instal flask python-dotenv gunicorn
+.venv/bin/pip3 install flask python-dotenv gunicorn
 
 repository_folder=$(whiptail --title "Repository Folder" \
                              --inputbox "Enter the absolute path to the repository folder:" \
