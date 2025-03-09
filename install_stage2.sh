@@ -41,7 +41,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/etc/PyGitHook.app
+WorkingDirectory=/etc/PyGitHook/app
 ExecStart=/etc/PyGitHook/.venv/bin/gunicorn --workers=4 --bind 0.0.0.0:5500 --threads=4 --timeout 600 app:app
 Restart=always
 
