@@ -16,5 +16,5 @@ After you've created a webhook on GitHub, log into your server and clone your re
 Once your repository is cloned, run the following command to install PyGitHook automatically:
 
 ```bash
-bash -c "$(curl -L https://raw.githubusercontent.com/Benrogo-Dev/PyGitHook/refs/heads/main/install.sh)"
+bash -c "$(curl -L https://raw.githubusercontent.com/Benrogo-Dev/PyGitHook/main/install.sh)"
 ```
